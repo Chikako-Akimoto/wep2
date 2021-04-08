@@ -1,3 +1,15 @@
 
 .nav.justify-content-end
   = link_to '製品登録', new_task_path,class: 'btn btn-danger'
+
+.mb-3
+table.table.table.table-hover
+  thead.thead-default
+    tr
+      th= Task.human_attribute_name(:name)
+      th= Task.human_attribute_name(:created_at)
+  tbody
+    - @tasks.each do |task|
+      tr
+        td= task.name
+        td= task.created_at

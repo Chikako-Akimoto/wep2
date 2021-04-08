@@ -2,17 +2,15 @@ doctype html
 html
   head
     title
-    | Wep2
-
+      | NDTEST
     = csrf_meta_tags
     = csp_meta_tag
-
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-
-
   body
-  .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-  .navbar-brand Wep2
-  .container
-   = yield
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      .navbar-brand NDTEST
+    .container
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
+      = yield
