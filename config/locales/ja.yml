@@ -15,3 +15,9 @@ ja:
         description: 備考
         created_at: 登録日時
         updated_at: 更新日時
+        deliverydate: 納期
+        productno: 製品ナンバー
+        client: 納品先
+        qty: 数量
+        workschedule: 工程
+        mt: MT
