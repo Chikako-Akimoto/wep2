@@ -59,3 +59,11 @@ gem 'html2slim'
 gem 'bootstrap'
 
 gem 'rails-i18n'
+
+gem "bootstrap4-datetime-picker-rails"
+
+gem 'momentjs-rails'
+
+gem "font-awesome-rails"
+
+gem 'bootstrap-sass'

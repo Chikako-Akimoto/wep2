@@ -1,2 +1,34 @@
-h1 Tasks#show
-p Find me in app/views/tasks/show.html.slim
+h1 製品詳細
+
+.nav.justify-content-end
+  = link_to '一覧', tasks_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Task.human_attribute_name(:deliverydate)
+      td= @task.deliverydate
+    tr
+      th= Task.human_attribute_name(:name)
+      td= @task.name
+    tr
+      th= Task.human_attribute_name(:productno)
+      td= @task.productno
+    tr
+      th= Task.human_attribute_name(:client)
+      td= @task.client
+    tr
+      th= Task.human_attribute_name(:qty)
+      td= @task.qty
+    tr
+      th= Task.human_attribute_name(:mt)
+      td= @task.mt
+    tr
+      th= Task.human_attribute_name(:workschedule)
+      td= @task.workschedule
+    tr
+      th= Task.human_attribute_name(:description)
+      td= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
+
+= link_to '編集', edit_task_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @task, method: :delete, data: { confirm: "本当に削除してよろしいですか？"},
+ class: 'btn btn-secondary'

@@ -1,2 +1,25 @@
-h1 Tasks#edit
-p Find me in app/views/tasks/edit.html.slim
+h1 編集画面
+
+.nav.justify-content-end
+  = link_to '一覧', tasks_path, class: 'nav-link'
+
+= form_with model: @task, local: true do |f|
+  .form-group
+    = f.label :deliverydate
+    = f.text_field :deliverydate, class: 'form-control', id: 'task_deliverydate'
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'task_name'
+  .form-group
+    = f.label :productno
+    = f.text_field :productno, class: 'form-control', id: 'task_productno'
+  .form-group
+    = f.label :client
+    = f.text_field :client, class: 'form-control', id: 'task_client'
+  .form-group
+    = f.label :qty
+    = f.text_field :qty, class: 'form-control', id: 'task_qty'
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
+  = f.submit nil, class: 'btn btn-primary'
