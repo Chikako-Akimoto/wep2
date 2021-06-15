@@ -1,15 +1,18 @@
-
 .nav.justify-content-end
-  = link_to 'ログアウト', new_task_path,class: 'btn btn-link'
+  = link_to 'ログイン',login_path, class:'nav-link'
+  = link_to 'ログアウト',logout_path,mathod: :delete, class:'nav-link'
   = link_to '製品登録', new_task_path,class: 'btn btn-link'
-.pt-3
-.btn-group
-  = link_to '３日間', new_task_path,class: 'btn btn-primary'
-  = link_to '１週間', new_task_path,class: 'btn btn-danger'
-  = link_to '今月', new_task_path,class: 'btn btn-success'
+
 .pb-3
 .mb-3
-table.table.table.table-hover
+ = search_form_for @q, class: 'mb-5' do |f|
+   .form-group.row
+     = f.label :name_or_client_or_productno_cont, 'キーワード：', class: 'form-label'
+     .col-xs-4
+       = f.search_field :name_or_client_or_productno_cont, class: 'form-control'
+     .form-froup
+       = f.submit class: 'btn btn-info'
+table.table.table-hover
   thead.thead-default
     tr
       th= Task.human_attribute_name(:deliverydate)
@@ -29,8 +32,8 @@ table.table.table.table-hover
         td= task.productno
         td= task.client
         td= task.qty
-        td= task.mt
-        td= task.workschedule
+        td.text-danger= task.mt
+        td.text-primary.font-weight-bold= task.workschedule
         td= task.description
         td
           = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'

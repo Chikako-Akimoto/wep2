@@ -9,7 +9,7 @@ h1 編集画面
     = f.select :mt, [["MT", "☀"],],include_blank: "AT"
   .form-group
     = f.label :workschedule
-    = f.select :workschedule, [["ロー付け","◯"], ["チョウコウロー付け","△"], ["塗装","◇"]], include_blank: "選択してください"
+    = f.select :workschedule,[["ロー付け","◎◎"], ["チョウコウロー付け","△▽"], ["塗装","◇◇"]], include_blank: "選択してください"
   .form-group
     = f.label :deliverydate, class: 'control-label'
     = f.date_field :deliverydate, class: 'form-control'
