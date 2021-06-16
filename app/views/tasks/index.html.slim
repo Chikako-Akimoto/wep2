@@ -5,17 +5,19 @@
 
 .pb-3
 .mb-3
- = search_form_for @q, class: 'mb-5' do |f|
+  = search_form_for @q, class: 'mb-5' do |f|
    .form-group.row
      = f.label :name_or_client_or_productno_cont, 'キーワード：', class: 'form-label'
      .col-xs-4
        = f.search_field :name_or_client_or_productno_cont, class: 'form-control'
      .form-froup
        = f.submit class: 'btn btn-info'
+  = paginate @tasks
+  = page_entries_info @tasks
 table.table.table-hover
   thead.thead-default
     tr
-      th= Task.human_attribute_name(:deliverydate)
+      th= sort_link(@q, :deliverydate)
       th= Task.human_attribute_name(:name)
       th= Task.human_attribute_name(:productno)
       th= Task.human_attribute_name(:client)
