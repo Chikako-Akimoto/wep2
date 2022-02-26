@@ -1,4 +1,10 @@
 class SessionsController < ApplicationController
+
+  def index 
+    reset_session
+    redirect_to '/login'
+  end
+
   def new
   end
 
@@ -7,7 +13,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to root_url, notice:'ログインしました'
+      redirect_to '/tasks', notice:'ログインしました'
     else
       render :new
     end
@@ -15,7 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to '/login' ,notice: 'ログアウトしました'
+    redirect_to '/login',notice: 'ログアウトしました'
 
   end
   private

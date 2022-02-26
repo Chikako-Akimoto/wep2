@@ -3,3 +3,11 @@
 
 const channels = require.context('.', true, /_channel\.js$/)
 channels.keys().forEach(channels)
+
+document.addEventListener('turbolinks:load',function() {
+  $(function() {
+  $('td.bg:contains("ﾛｰ付")').css("background-color", "yellow");
+  $('td.bg:contains("ﾁｮｳｺｳ")').css("background-color", "green");
+   $('td.bg:contains("ﾄｿｳ")').css("background-color", "blue"); //注意アウトプットもう少しきれいなコードがいい
+ });
+});

@@ -29,6 +29,8 @@ table.table.table-hover
       th= Task.human_attribute_name(:description)
       td= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
 
-= link_to '編集', edit_task_path, class: 'btn btn-primary mr-3'
-= link_to '削除', @task, method: :delete, data: { confirm: "本当に削除してよろしいですか？"},
- class: 'btn btn-secondary'
+= link_to edit_task_path, class: 'btn btn-primary mr-3',method: :get do
+  = icon 'fas', 'edit'
+= link_to @task, data: { confirm: "本当に削除してよろしいですか？"},
+ class: 'btn btn-danger text-white',method: :delete do
+  = icon 'fas','poo'

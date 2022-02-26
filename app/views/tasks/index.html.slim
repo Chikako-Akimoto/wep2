@@ -1,17 +1,29 @@
 
-
 .pb-3
 .mb-3
-  = search_form_for @q, class: 'mb-5' do |f|
+  = search_form_for @q, class: 'mb-5' do |f|##fの中でしか使えない
    .form-group.row
      = f.label :name_or_client_or_productno_cont, 'キーワード：', class: 'form-label'
-     .col-xs-4
+     .col-xs-2
        = f.search_field :name_or_client_or_productno_cont, class: 'form-control'
-     .form-froup
-       = f.submit class: 'btn btn-info'
+       .d-flex.align-items-start
+         = f.date_field :deliverydate_gteq,include_blank: true,class: 'form-control'
+         p ～
+         = f.date_field :deliverydate_lteq,include_blank: true, class: 'form-control'
+       .radio_button
+         = f.label :client_eq,'在庫', class:'mr-2'
+         = f.radio_button :client_eq,'在庫', class:'mr-2'
+         = f.label :mt_eq,'手付け' ,class:'mr-2'
+         = f.radio_button :mt_eq,'☀'
+       .text-right
+         = f.submit class: 'btn btn-primary w-25'
+         = link_to 'リセット', request.path, class: 'btn btn-secondary w-25 ml-2 '
+  h3 = '本日：' + @today_date
+  = @deliverydate_to_db
+
   = paginate @tasks
   = page_entries_info @tasks
-table.table.table-hover
+table.table
   thead.thead-default
     tr
       th= sort_link(@q, :deliverydate)
@@ -21,20 +33,33 @@ table.table.table-hover
       th= Task.human_attribute_name(:qty)
       th= Task.human_attribute_name(:mt)
       th= Task.human_attribute_name(:workschedule)
+      th= Task.human_attribute_name(:chip)
+      th= Task.human_attribute_name(:kiban)
       th= Task.human_attribute_name(:description)
       th
   tbody
     - @tasks.each do |task|
       tr
-        td= task.deliverydate
+        - if task.deliverydate.to_s == @today_date
+          td.delivery_today_color.r= task.deliverydate
+        - elsif task.deliverydate.to_s == @tomorrow_date
+          td.delivery_tommorow_color.r= task.deliverydate
+        - elsif task.deliverydate.to_s == @after_tomorrow_date
+          td.delivery_a_tomorow_color.r= task.deliverydate
+        - else
+          td= task.deliverydate
         td= link_to task.name,task
         td= task.productno
         td= task.client
         td= task.qty
         td.text-danger= task.mt
-        td.text-primary= task.workschedule
+        td.bg.wsc= task.workschedule
+        td.text-danger.h5= task.chip
+        td.text-danger.h5= task.kiban
         td= task.description
         td
-          = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
-          = link_to '削除', task, method: :delete, data: { confirm: "本当に削除してよろしいですか？"},
-           class: 'btn btn-secondary'
+          = link_to edit_task_path(task), class: 'btn btn-primary mr-3', method: :get do
+            = icon 'fas', 'edit'
+          = link_to task, data: { confirm: "本当に削除してよろしいですか？"},
+            class: 'btn btn-danger text-white ', method: :delete do
+            = icon 'far', 'trash-alt'

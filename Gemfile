@@ -64,11 +64,9 @@ gem "bootstrap4-datetime-picker-rails"
 
 gem 'momentjs-rails'
 
-gem "font-awesome-rails"
+gem "font-awesome-sass"
 
 gem 'bootstrap-sass'
-
-gem 'font-awesome-sass'
 
 gem 'ransack'
 
@@ -77,3 +75,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'kaminari'
+
+gem 'hirb'
+
+gem 'hirb-unicode'
