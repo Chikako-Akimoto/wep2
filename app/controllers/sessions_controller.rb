@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-
-  def index 
-    reset_session
-    redirect_to '/login'
-  end
+skip_before_action :login_required
+  #def index
+  #  reset_session
+  #  redirect_to '/login'
+  #end
 
   def new
   end

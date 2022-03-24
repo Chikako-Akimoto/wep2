@@ -1,17 +1,16 @@
 class TasksController < ApplicationController
   def index
-     # 現在日付を取得 YYYY/mm/dd
-    @today_date = Date.today.strftime('%Y-%m-%d')
-    @calendar = Calendar.all.select(:dates).where(working_day_flag: 0).pluck(:dates).map{|date| date.strftime("%Y-%m-%d")}
+    @today_date = Date.today.strftime('%Y-%m-%d')##現在の日付を取得
+    @calendar = Calendar.all.select(:dates).where(working_day_flag: 0).pluck(:dates).map{|date| date.strftime("%Y-%m-%d")}##カレンダーテーブルの営業日を取得
     @cl = @calendar.index(@today_date)
-    @cl = @cl.to_i
+    @cl = @cl.to_i##integerに変換
     @cl_tree_days = @calendar.slice(@cl,3)#今日から３日間
     @tomorrow_date = @cl_tree_days.slice(1)#明日の日付
     @after_tomorrow_date = @cl_tree_days.slice(2)#明後日の日付
 
     @q = Task.ransack(params[:q])
     @q.sorts ='deliverydate asc' if @q.sorts.empty? ##ソートをデフォルト昇順にする
-    @tasks = @q.result(distinct: true).order(deliverydate: :desc).page(params[:page])
+    @tasks = @q.result(distinct: true).order(deliverydate: :desc).page(params[:page]).per(50)
   end
 
   def show

@@ -14,31 +14,31 @@ h1 編集画面
     = f.select :workschedule,[['ロー付け','ﾛｰ付'], ["チョウコウロー付け","ﾁｮｳｺｳ"], ["塗装","ﾄｿｳ"]], include_blank: "選択してください"
   .from-group
     = f.label :chip , class:'mt-3'
-    = f.text_field :chip, class: 'form-control', id: 'task_chip' , list:'list-name'
+    = f.text_field :chip, class: 'form-control', id: 'task_chip' , list:'list-name',autocomplete:'off'
     datalist id="list-name"
       option value="◯"
       option value='✕'
   .form-group
      = f.label :kiban
-     = f.text_field :kiban, class: 'form-control', id: 'task_kiban' , list:'list-name'
+     = f.text_field :kiban, class: 'form-control', id: 'task_kiban' , list:'list-name',autocomplete:'off'
      datalist id="list-name"
        option value="◯"
        option value='✕'
   .form-group
     = f.label :deliverydate, class: 'control-label'
-    = f.date_field :deliverydate, class: 'form-control'
+    = f.date_field :deliverydate, class: 'form-control',autocomplete:'off'
   .form-group
     = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'task_name'
+    = f.text_field :name, class: 'form-control', id: 'task_name',autocomplete:'off'
   .form-group
     = f.label :productno
-    = f.text_field :productno, class: 'form-control', id: 'task_productno'
+    = f.text_field :productno, class: 'form-control', id: 'task_productno',autocomplete:'off'
   .form-group
     = f.label :client
-    = f.text_field :client, class: 'form-control', id: 'task_client'
+    = f.text_field :client, class: 'form-control', id: 'task_client',autocomplete:'off'
   .form-group
     = f.label :qty
-    = f.text_field :qty, class: 'form-control', id: 'task_qty'
+    = f.text_field :qty, class: 'form-control', id: 'task_qty',autocomplete:'off'
   .form-group
     = f.label :description
     = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'

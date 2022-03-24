@@ -9,25 +9,25 @@
     = f.date_field :deliverydate, class: 'form-control'
    .form-group
     = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'task_name'
+    = f.text_field :name, class: 'form-control', id: 'task_name',autocomplete:'off'
    .form-group
     = f.label :productno
-    = f.text_field :productno, class: 'form-control', id: 'task_productno'
+    = f.text_field :productno, class: 'form-control', id: 'task_productno',autocomplete:'off'
    .form-group
     = f.label :client
-    = f.text_field :client, class: 'form-control', id: 'task_client'
+    = f.text_field :client, class: 'form-control', id: 'task_client',autocomplete:'off'
    .form-group
     = f.label :qty
-    = f.text_field :qty, class: 'form-control', id: 'task_qty'
+    = f.text_field :qty, class: 'form-control', id: 'task_qty',autocomplete:'off'
     .form-group
       = f.label :chip , class:'mt-3'
-      = f.text_field :chip, class: 'form-control', id: 'task_chip' , list:'list-name'
+      = f.text_field :chip, class: 'form-control', id: 'task_chip' , list:'list-name',autocomplete:'off'
       datalist id="list-name"
         option value="◯"
         option value='✕'
     .form-group
       = f.label :kiban
-      = f.text_field :kiban, class: 'form-control', id: 'task_kiban' , list:'list-name'
+      = f.text_field :kiban, class: 'form-control', id: 'task_kiban' , list:'list-name',autocomplete:'off'
       datalist id="list-name"
         option value="◯"
         option value='✕'

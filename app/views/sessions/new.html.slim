@@ -3,7 +3,7 @@ h1 ログイン
 = form_with scope: :session, local:true do |f|
   .form-group.col-xs-4
     = f.label :name, 'Name'
-    = f.text_field :name, class: 'form-control', id: 'session_name'
+    = f.text_field :name, class: 'form-control', id: 'session_name',autocomplete:'off'
   .form-group
     = f.label :password, 'Password'
     = f.password_field :password, class: 'form-control col-xs-3 ', id: 'session_password'

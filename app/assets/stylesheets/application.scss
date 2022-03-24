@@ -3,7 +3,7 @@
 @import "font-awesome";
 @import "tempusdominus-bootstrap-4.css";
 
-.wsc{color :#90ee90
+.wsc{color :white
   ;}
 
 .delivery_today_color{
@@ -19,3 +19,16 @@ background-color:red
   ;}
 
 .r{font-weight: 700;}
+
+.tablesc{
+  width:150px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.table_block{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
