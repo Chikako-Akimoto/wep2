@@ -11,10 +11,14 @@
          p ～
          = f.date_field :deliverydate_lteq,include_blank: true, class: 'form-control'
        .radio_button
-         = f.label :client_cont,'在庫', class:'mr-2'
+         = f.label :client_cont,'在庫'
          = f.radio_button :client_cont,'在庫', class:'mr-2'
-         = f.label :mt_eq,'手付け' ,class:'mr-2'
+         = f.label :mt_eq,'手付け'
          = f.radio_button :mt_eq,'☀'
+         = f.label :workschedule_eq,'塗装',class:'ml-2'
+         = f.radio_button :workschedule_eq,'ﾄｿｳ'
+         = f.label :workschedule_eq,'ロー付け',class:'ml-2'
+         = f.radio_button :workschedule_eq,'ﾛｰ付'
        .text-right
          = f.submit class: 'btn btn-primary w-25'
          = link_to 'リセット', request.path, class: 'btn btn-secondary w-25 ml-2 '
