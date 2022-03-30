@@ -40,7 +40,8 @@ table.table
       th= Task.human_attribute_name(:chip)
       th= Task.human_attribute_name(:kiban)
       th= Task.human_attribute_name(:description)
-      th
+      th=sort_link(@q, :updated_at)
+      th.bg-warning.text-white= "工程変更"
   tbody
     - @tasks.each do |task|
       tr.text-center
@@ -67,3 +68,8 @@ table.table
           = link_to task, data: { confirm: "本当に削除してよろしいですか？"},
             class: 'btn btn-danger text-white ', method: :delete do
             = icon 'far', 'trash-alt'
+        td.koutei.bg-light
+          = form_with model: task, local: true do |f|
+            = f.select :workschedule,[['ﾛｰ付','ﾛｰ付'], ["ﾁｮｳｺｳ","ﾁｮｳｺｳ"], ["塗装","ﾄｿｳ"]], include_blank: "選択"
+            = button_tag type: 'submit', class: 'btn btn-warning text-white' do
+              = icon 'fas', 'child'
